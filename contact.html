@@ -72,7 +72,7 @@
 			          	<div class="icon mr-3">
 			          		<span class="icon-map-o"></span>
 			          	</div>
-			            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+			            <p><span>Address:</span> Papal ground federal housing, Kubwa Express, Abuja, Nigeria</p>
 			          </div>
 		          </div>
 		          <div class="col-md-12">
@@ -80,7 +80,7 @@
 			          	<div class="icon mr-3">
 			          		<span class="icon-mobile-phone"></span>
 			          	</div>
-			            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+			            <p><span>Phone:</span> <a href="tel://1234567920">+234 911 948 8016</a></p>
 			          </div>
 		          </div>
 		          <div class="col-md-12">
@@ -88,29 +88,37 @@
 			          	<div class="icon mr-3">
 			          		<span class="icon-envelope-o"></span>
 			          	</div>
-			            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+			            <p><span>Email:</span> <a href="mailto:info@yoursite.com">realestwheels@gmail.com</a></p>
 			          </div>
 		          </div>
 		        </div>
           </div>
           <div class="col-md-8 block-9 mb-md-5">
-            <form action="#" class="bg-light p-5 contact-form">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
+            <form id="contact-form" class="bg-light p-5 contact-form">
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="subject" class="form-control" placeholder="Subject">
+            </div>
+
+            <div class="form-group">
+              <textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+            </div>
+          </form>
           
           </div>
         </div>
@@ -166,7 +174,7 @@
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Papal ground federal housing, Kubwa Express, Abuja, Nigeria</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+234 911 948 8016</span></a></li>
 	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">realestwheels@gmail.com</span></a></li>
 	              </ul>
@@ -209,6 +217,29 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+  (function(){
+    emailjs.init("gfqA-si4Oq44r1q7K"); 
+  })();
+
+  // Handle form submit
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_35m9927",   
+      "template_5njtmhg",  
+      this
+    )
+    .then(function() {
+      alert("Message sent successfully!");
+    }, function(error) {
+      alert("Failed to send message. Try again.");
+      console.log(error);
+    });
+  });
+</script>
     
   </body>
 </html>
