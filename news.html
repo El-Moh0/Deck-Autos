@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recent News from the car World</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #white;
+      color: #6dcc6d;
+    }
+
+    .container {
+      padding: 80px;
+    }
+
+    h1 {
+      border-left: 5px solid #1be480;
+      padding-left: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #363333;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #5611d6;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Recent News from the car World</h1>
+  <div id="news" class="grid"></div>
+</div>
+
+<script>
+  const apiKey = "5e433d4e570649bf9eb1a5779a472468";
+
+  fetch(`https://newsapi.org/v2/everything?q=automotive OR cars OR electric vehicles&apiKey=${apiKey}`)
+    .then(res => res.json())
+    .then(data => {
+      const newsContainer = document.getElementById("news");
+
+      data.articles.forEach(article => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <img src="${article.urlToImage || 'https://via.placeholder.com/400'}" />
+          <div class="content">
+            <div class="title">${article.title}</div>
+            <div class="desc">${article.description || ''}</div>
+            <a href="${article.url}" target="_blank" class="btn">Read More →</a>
+          </div>
+        `;
+
+        newsContainer.appendChild(card);
+      });
+    });
+</script>
+
+</body>
+</html>
